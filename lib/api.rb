@@ -4,8 +4,18 @@ class API
     url = "https://restcountries.eu/rest/v2/lang/es"
     uri = URI(url)
     response = Net::HTTP.get(uri)
-    binding.pry
-    array = JSON.parse(response)
+    array_of_countries = JSON.parse(response)
+        binding.pry
+    array_of_countries.each do |country_hash|
+      country = Country.new
+      country.name = country_hash["name"]
+      country.capital = country_hash["capital"]
+      country.region = country_hash["region"]
+      country.subregion = country_hash["subregion"]
+      country.population = country_hash["population"]
+      country.borders = country_hash["borders"]
+      country.currencies = country_hash["currencies"]
+    end
   end
-  
+
 end
