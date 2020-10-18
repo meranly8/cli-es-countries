@@ -16,8 +16,6 @@ class API
       country.borders = country_hash["borders"]
       country.currencies = country_hash["currencies"]
     end
-    binding.pry
   end
-
 
 end
