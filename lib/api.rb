@@ -5,8 +5,12 @@ class API
     uri = URI(url)
     response = Net::HTTP.get(uri)
     array_of_countries = JSON.parse(response)
-        binding.pry
-    array_of_countries.each do |country_hash|
+
+    make_countries(array_of_countries)
+  end
+
+  def make_countries(countries_array)
+    countries_array.each do |country_hash|
       country = Country.new
       country.name = country_hash["name"]
       country.capital = country_hash["capital"]
