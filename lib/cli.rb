@@ -43,6 +43,14 @@ class CLI
       sleep(1)
       country_index = gets.strip.to_i-1
     end
+    #save selection as index of country in Country array
+    country_selection = Country.all.[country_index]
+    #use selection to display that country's details
+
+    def display_selected_countrys_details(country)
+      sleep(1)
+      
+    end
   end
 
 end
