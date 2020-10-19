@@ -1,6 +1,6 @@
 class CLI
   def start
-    puts "Hello"
+    puts "¡Hola!"
     API.fetch_countries
 
     sleep(1)
@@ -9,16 +9,18 @@ class CLI
 
   def view
     puts "Would you like to learn more about Spanish speaking countries?"
-    puts "Enter 'y' to view directory or any other key to exit"
+    puts "Enter 'y' to view country directory or any other key to exit"
 
     user_input = gets.strip.downcase
 
     if user_input == "y"
-      puts "¡Muy bien!"
+      puts "¡Muy bien! Here's a directory of countries that speak Español."
+      puts "\n"
 
       sleep(1)
       display_list_of_countries
-
+      ask_for_country_selection
+      #ask for input of which country to view details of
     end
   end
 
@@ -26,6 +28,12 @@ class CLI
     Country.all.each.with_index(1) do |country, index|
       puts "#{index}. #{country.name}"
     end
+  end
+
+  def ask_for_country_selection
+    puts "\n"
+    puts "Please enter the number of the country to learn more about it."
+    puts "Select a number 1-#{Country.all.length}."
   end
 
 end
