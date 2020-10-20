@@ -1,22 +1,26 @@
 class CLI
+  attr_accessor :counter
+
   def start
-    puts "¡Hola!"
+    puts "¡Hola! ¿Cómo estás?"
     API.fetch_countries
 
     sleep(1)
+    @counter = 0
     self.open_menu
   end
 
   def open_menu
-    counter = 0
-    if counter == 0
+    if self.counter == 0
       puts "\n"
       puts "Would you like to learn more about Spanish speaking countries?"
       sleep(1)
       puts "Enter 'y' to view the country directory or any other key to exit"
-      counter += 1
+      self.counter += 1
     else
-      puts "Would you like to view another?"
+      sleep(3)
+      puts "\n"
+      puts "Would you like to learn more about another?"
       sleep(1)
       puts "Enter 'y' to view the country directory or any other key to exit"
     end
@@ -31,6 +35,8 @@ class CLI
       display_list_of_countries
       ask_for_country_selection
 
+      # puts "Would you like to learn more about another?"
+      # sleep (1)
       open_menu
     else
       puts "¡OK, adios!"
@@ -66,8 +72,8 @@ class CLI
     puts "¡Excelente!"
     sleep(1)
     puts "\n"
-    puts "         #{country.name.upcase}"
-    puts "   Name:        #{country.name}"
+    puts "          #{country.name.upcase}"
+    puts "   Native Name: #{country.native_name}"
     puts "   Capital:     #{country.capital}"
     puts "   Region:      #{country.region}"
     puts "                  #{country.subregion}"
