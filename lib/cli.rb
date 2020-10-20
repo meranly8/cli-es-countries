@@ -8,10 +8,18 @@ class CLI
   end
 
   def open_menu
-    puts "\n"
-    puts "Would you like to learn more about Spanish speaking countries?"
-    sleep(1)
-    puts "Enter 'y' to view the country directory or any other key to exit"
+    counter = 0
+    if counter == 0
+      puts "\n"
+      puts "Would you like to learn more about Spanish speaking countries?"
+      sleep(1)
+      puts "Enter 'y' to view the country directory or any other key to exit"
+      counter += 1
+    else
+      puts "Would you like to view another?"
+      sleep(1)
+      puts "Enter 'y' to view the country directory or any other key to exit"
+    end
 
     user_input = gets.strip.downcase
 
@@ -22,7 +30,10 @@ class CLI
       sleep(3)
       display_list_of_countries
       ask_for_country_selection
-      #ask for input of which country to view details of
+
+      open_menu
+    else
+      puts "¡OK, adios!"
     end
   end
 
@@ -62,8 +73,11 @@ class CLI
     puts "                  #{country.subregion}"
     puts "\n"
     puts "   Population:  #{country.population}"
-    #borders are an array of borders
-    puts "   Borders:     #{country.borders.join(", ")}"
+    if country.borders.length == 0
+      puts "   Borders:     #{country.name} is an island"
+    else
+      puts "   Borders:     #{country.borders.join(", ")}"
+    end
     puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
   end
 
