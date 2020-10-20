@@ -72,6 +72,7 @@ class CLI
     puts "   Region:      #{country.region}"
     puts "                  #{country.subregion}"
     puts "\n"
+    puts "   Demonym:     #{country.demonym}"
     puts "   Population:  #{country.population}"
     if country.borders.length == 0
       puts "   Borders:     #{country.name} is an island"
