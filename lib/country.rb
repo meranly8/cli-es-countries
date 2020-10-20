@@ -1,5 +1,5 @@
 class Country
-  attr_accessor :name, :capital, :region, :subregion, :population, :borders, :currencies
+  attr_accessor :name, :capital, :region, :subregion, :population, :borders, :currencies, :currency_name, :currency_symbol
 
   @@all = []
 

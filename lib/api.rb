@@ -8,6 +8,7 @@ class API
 
     array_of_countries.each do |country_hash|
       country = Country.new
+      binding.pry
       country.name = country_hash["name"]
       country.capital = country_hash["capital"]
       country.region = country_hash["region"]
@@ -15,6 +16,11 @@ class API
       country.population = country_hash["population"]
       country.borders = country_hash["borders"]
       country.currencies = country_hash["currencies"]
+      country_hash["currencies"].each do |type|
+          country.currency_name = type["name"]
+          country.currency_symbol = type["symbol"]
+      end
+      country.currency_name = country_hash["currencies"]["name"]
     end
   end
 

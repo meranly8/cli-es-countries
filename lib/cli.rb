@@ -8,7 +8,9 @@ class CLI
   end
 
   def open_menu
+    puts "\n"
     puts "Would you like to learn more about Spanish speaking countries?"
+    sleep(1)
     puts "Enter 'y' to view the country directory or any other key to exit"
 
     user_input = gets.strip.downcase
@@ -25,8 +27,7 @@ class CLI
   end
 
   def display_list_of_countries
-    title = "directorio de países que hablan español".upcase
-    puts title
+    puts "Country Directory".upcase
     Country.all.each.with_index(1) do |country, index|
       puts "#{index}. #{country.name}"
     end
@@ -60,8 +61,10 @@ class CLI
     puts "                  #{country.subregion}"
     puts "\n"
     puts "   Population:  #{country.population}"
-    #borders are an array or borders
+    #borders are an array of borders
     puts "   Borders:     #{country.borders.join(", ")}"
+    binding.pry
+    puts "   Currency:    #{country.currencies["name"]}"
   end
 
 end
