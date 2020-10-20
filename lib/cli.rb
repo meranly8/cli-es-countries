@@ -52,6 +52,7 @@ class CLI
   end
 
   def display_selected_countrys_details(country)
+    puts "¡Excelente!"
     sleep(1)
     puts "\n"
     puts "         #{country.name.upcase}"
@@ -63,8 +64,7 @@ class CLI
     puts "   Population:  #{country.population}"
     #borders are an array of borders
     puts "   Borders:     #{country.borders.join(", ")}"
-    binding.pry
-    puts "   Currency:    #{country.currencies["name"]}"
+    puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
   end
 
 end
