@@ -25,6 +25,8 @@ class CLI
   end
 
   def display_list_of_countries
+    title = "directorio de países que hablan español".upcase
+    puts title
     Country.all.each.with_index(1) do |country, index|
       puts "#{index}. #{country.name}"
     end
@@ -38,8 +40,7 @@ class CLI
     country_index = gets.strip.to_i-1
 
     until country_index.between?(0, Country.all.length-1)
-      puts "¡No bueno! Invalid selection. Try another selection, por favor."
-      puts "\n"
+      puts "¡No bueno! Invalid selection. Try another, por favor."
       sleep(1)
       country_index = gets.strip.to_i-1
     end
@@ -52,14 +53,15 @@ class CLI
   def display_selected_countrys_details(country)
     sleep(1)
     puts "\n"
-    puts "       #{country.name.upcase}"
-    puts "   Name:    #{country.name}"
-    puts "   Capital: #{country.capital}"
-    puts "   Region:  #{country.region}"
-    puts "            #{country.subregion}"
+    puts "         #{country.name.upcase}"
+    puts "   Name:        #{country.name}"
+    puts "   Capital:     #{country.capital}"
+    puts "   Region:      #{country.region}"
+    puts "                  #{country.subregion}"
     puts "\n"
-
-    
+    puts "   Population:  #{country.population}"
+    #borders are an array or borders
+    puts "   Borders:     #{country.borders.join(", ")}"
   end
 
 end
