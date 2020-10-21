@@ -1,4 +1,5 @@
 # Spanish Speaking Countries
+## About
 This CLI application allows users to view details about different Spanish speaking countries
 using restcountries.eu API data
 
