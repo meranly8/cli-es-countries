@@ -13,36 +13,40 @@ class CLI
   def open_menu
     if self.counter == 0
       puts "\n"
-      puts "Would you like to learn about Spanish speaking countries?"
-      puts "Enter 'y' to view the country directory or any other key to exit."
+      puts "Would you like to learn about Spanish speaking countries? (l/q/e)"
+      puts "l = learn, q = quiz, e = exit."
       self.counter += 1
     else
       sleep(4)
       puts "\n"
-      puts "Would you like to learn more about another?"
+      puts "Would you like to learn more about another or test your knowledge of the country capitals?"
       puts "Enter 'y' to view the country directory or any other key to exit."
     end
 
     user_input = gets.strip.downcase
 
-    if user_input == "y"
+    if user_input == "y" || user_input = ""
       puts "¡Muy bien! Here's a directory of the countries that speak Español."
       puts "\n"
 
       sleep(3)
       display_list_of_countries
+
       ask_for_country_selection
 
       open_menu
-    else
+    elsif user_input = "quiz"
+
+
+    elsif
       puts "¡OK, adios!"
     end
   end
 
   def display_list_of_countries
     puts "           Country Directory".upcase
-    Country.all.each.with_index(1) do |country, index|
-      puts "   #{index}. #{country.name}"
+    Country.all.each_with_index do |country, index|
+      puts "   #{index+1}. #{country.name}"
     end
   end
 
@@ -84,4 +88,8 @@ class CLI
     puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
   end
 
+  #Would you like to test your knowledge on the country capitals?
+  def capital_quiz
+
+  end
 end
