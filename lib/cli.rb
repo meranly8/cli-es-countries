@@ -44,7 +44,7 @@ class CLI
 
     elsif user_input == "q"
       puts "¡Vamonos!"
-      "\n"
+      puts "\n"
 
       capital_quiz
     else
@@ -99,20 +99,62 @@ class CLI
 
   #Would you like to test your knowledge on the country capitals?
   def capital_quiz
-    binding.pry
     quiz = Country.all.shuffle
-    questions = quiz[0..3]
+    questions = quiz[0..2]
 
     display_quiz_question(questions)
-
 
   end
 
   def display_quiz_question(quiz_questions)
-    quiz_questions.collect do |country|
-      quiz_country = country.name
-      quiz_capital = country.capital
+    score = 0
+    quiz_content = []
+
+    quiz_questions.each do |country|
+      content = [country.name, country.capital]
+      quiz_content << content
     end
-    puts
+
+    puts "What is the capital of #{quiz_content[0][0]}?"
+    q1_input = gets.strip.downcase
+    if q1_input == quiz_content[0][1].downcase
+      puts "¡Correcto!"
+      score += 1
+    else
+      puts "¡Ay lo siento! #{quiz_content[0][1].capitalize} is the capital of #{quiz_content[0][0].capitalize}"
+    end
+
+    puts "\n"
+    puts "What is the capital of #{quiz_content[1][0]}?"
+    q2_input = gets.strip.downcase
+    if q2_input == quiz_content[1][1].downcase
+      puts "¡Fabuloso!"
+      score += 1
+    else
+      puts "¡Incorrecto! #{quiz_content[1][1].capitalize} is the capital of #{quiz_content[1][0].capitalize}"
+    end
+
+    puts "\n"
+    puts "What is the capital of #{quiz_content[2][0]}?"
+    q3_input = gets.strip.downcase
+    if q3_input == quiz_content[2][1].downcase
+      puts "¡Maravilloso!"
+      score += 1
+    else
+      puts "¡Ay triste! #{quiz_content[1][1].capitalize} is the capital of #{quiz_content[1][0].capitalize}"
+    end
+    puts "\n"
+    if score == 0 || score == 1
+      puts "¡Muy mal! Keep studying. You scored #{score}/#{quiz_content.size}"
+      puts "\n"
+    elsif score == 2
+      puts "Que bueno. Pretty good. You scored #{score}/#{quiz_content.size}"
+      puts "\n"
+    else
+      puts "¡Magnífica! Very smart! You scored #{score}/#{quiz_content.size}"
+      puts "\n"
+    end
+
+    open_menu
   end
 end
