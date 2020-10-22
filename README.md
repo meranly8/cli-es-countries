@@ -1,7 +1,8 @@
 # Spanish Speaking Countries
 ## About
 This CLI application allows users to view details about different Spanish speaking countries
-using restcountries.eu API data
+using restcountries.eu API data. After learning about the countries, users can test their knowledge of
+country capitals with a 3 question quiz.
 
 ## Usage
 In terminal, clone the code.
