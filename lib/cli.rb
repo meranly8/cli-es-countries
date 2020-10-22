@@ -144,15 +144,13 @@ class CLI
       puts "¡Ay triste! #{quiz_content[2][1].capitalize} is the capital of #{quiz_content[2][0].capitalize}"
     end
     puts "\n"
-    score_system(score)
-  end
+    puts "\n"
 
-  def score_system(quiz_score)
     if score == 0 || score == 1
       puts "You scored #{score}/#{quiz_content.size}.¡Muy mal! Keep studying."
       puts "\n"
     elsif score == 2
-      puts "You scored #{score}/#{quiz_content.size}. Que bueno. Pretty good."
+      puts "You scored #{score}/#{quiz_content.size}. Que bueno."
       puts "\n"
     else
       puts "You scored #{score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
@@ -160,6 +158,7 @@ class CLI
     end
 
     open_menu
+    # score_system(score, quiz_content)
   end
 
 end
