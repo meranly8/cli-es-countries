@@ -17,7 +17,7 @@ class CLI
       puts "l = learn, q = quiz, e = exit"
       self.counter += 1
     else
-      sleep(4)
+      sleep(3)
       puts "\n"
       puts "Would you like to learn more about another or test your knowledge of the country capitals?"
       puts "l = learn, q = quiz, e = exit"
@@ -141,20 +141,25 @@ class CLI
       puts "¡Maravilloso!"
       score += 1
     else
-      puts "¡Ay triste! #{quiz_content[1][1].capitalize} is the capital of #{quiz_content[1][0].capitalize}"
+      puts "¡Ay triste! #{quiz_content[2][1].capitalize} is the capital of #{quiz_content[2][0].capitalize}"
     end
     puts "\n"
+    score_system(score)
+  end
+
+  def score_system(quiz_score)
     if score == 0 || score == 1
-      puts "¡Muy mal! Keep studying. You scored #{score}/#{quiz_content.size}"
+      puts "You scored #{score}/#{quiz_content.size}.¡Muy mal! Keep studying."
       puts "\n"
     elsif score == 2
-      puts "Que bueno. Pretty good. You scored #{score}/#{quiz_content.size}"
+      puts "You scored #{score}/#{quiz_content.size}. Que bueno. Pretty good."
       puts "\n"
     else
-      puts "¡Magnífica! Very smart! You scored #{score}/#{quiz_content.size}"
+      puts "You scored #{score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
       puts "\n"
     end
 
     open_menu
   end
+
 end
