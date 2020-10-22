@@ -14,18 +14,24 @@ class CLI
     if self.counter == 0
       puts "\n"
       puts "Would you like to learn about Spanish speaking countries? (l/q/e)"
-      puts "l = learn, q = quiz, e = exit."
+      puts "l = learn, q = quiz, e = exit"
       self.counter += 1
     else
       sleep(4)
       puts "\n"
       puts "Would you like to learn more about another or test your knowledge of the country capitals?"
-      puts "Enter 'y' to view the country directory or any other key to exit."
+      puts "l = learn, q = quiz, e = exit"
     end
 
     user_input = gets.strip.downcase
 
-    if user_input == "y" || user_input = ""
+    while user_input.length > 1
+        puts "¡Ay! Only 1 character, por favor."
+        user_input = gets.strip.downcase
+    end
+
+
+    if user_input == "l"
       puts "¡Muy bien! Here's a directory of the countries that speak Español."
       puts "\n"
 
@@ -35,10 +41,13 @@ class CLI
       ask_for_country_selection
 
       open_menu
-    elsif user_input = "quiz"
 
+    elsif user_input == "q"
+      puts "¡Vamonos!"
+      "\n"
 
-    elsif
+      capital_quiz
+    else
       puts "¡OK, adios!"
     end
   end
@@ -90,6 +99,20 @@ class CLI
 
   #Would you like to test your knowledge on the country capitals?
   def capital_quiz
+    binding.pry
+    quiz = Country.all.shuffle
+    questions = quiz[0..3]
 
+    display_quiz_question(questions)
+
+
+  end
+
+  def display_quiz_question(quiz_questions)
+    quiz_questions.collect do |country|
+      quiz_country = country.name
+      quiz_capital = country.capital
+    end
+    puts
   end
 end
