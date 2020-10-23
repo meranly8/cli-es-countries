@@ -101,16 +101,21 @@ class CLI
       puts "   Borders:     #{country.borders.join(", ")}"
     end
     puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
+
+    if self.counter.even?
+      self.counter -= 1
+    end
+
   end
 
   def capital_quiz
     quiz = Country.all.shuffle
     questions = quiz[0..2]
 
-    grab_quiz_questions(questions)
+    gather_quiz_content(questions)
   end
 
-  def grab_quiz_questions(quiz_questions)
+  def gather_quiz_content(quiz_questions)
     quiz_content = []
 
     quiz_questions.each do |country|
