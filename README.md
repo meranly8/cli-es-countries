@@ -1,7 +1,7 @@
 # Spanish Speaking Countries
 ## About
 This CLI application allows users to view details about different Spanish speaking countries
-using restcountries.eu API data. After learning about the countries, users can test their knowledge of
+using [restcountries.eu](https://restcountries.eu/) API data. After learning about the countries, users can test their knowledge of
 country capitals with a 3 question quiz.
 
 ![alt text][logo]
@@ -19,7 +19,7 @@ Run the program by calling the run file in the terminal.
 ruby bin/run
 ```
 ## Support
-If an issue arises, please fill out an issue and assign it to meranly@gmail.com
+If an issue arises, please fill out an issue and assign it to meranly8
 
 [Open New Issue for es_countries](https://github.com/meranly8/es_countries/issues/new)
 
