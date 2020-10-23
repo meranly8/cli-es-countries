@@ -14,6 +14,9 @@ Run the program by calling the run file in the terminal.
 ```ruby
 ruby bin/run
 ```
+## Support
+If an error arises, please fill out an issue and assign it to meranly@gmail.com
+[Open New Issue for es_countries](https://github.com/meranly8/es_countries/issues/new)
 
 ## License
 MIT License
