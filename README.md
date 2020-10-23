@@ -3,6 +3,7 @@
 This CLI application allows users to view details about different Spanish speaking countries
 using restcountries.eu API data. After learning about the countries, users can test their knowledge of
 country capitals with a 3 question quiz.
+
 ![alt text][logo]
 [logo]: https://media2.giphy.com/media/jO2kgIUxDLm9nJDsMj/giphy.gif "Hola"
 
