@@ -103,7 +103,7 @@ class CLI
     puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
 
     self.counter -= 1 if self.counter.even?
-    
+
   end
 
   def capital_quiz
@@ -121,10 +121,10 @@ class CLI
       quiz_content << content
     end
 
-    display_quiz_questions(quiz_content)
+    start_quiz(quiz_content)
   end
 
-  def display_quiz_questions(content)
+  def start_quiz(content)
     score = 0
     sleep(1)
     puts "Welcome to the Capital Quiz. ¡Buena suerte!"
@@ -172,7 +172,7 @@ class CLI
       puts "You scored #{quiz_score}/#{quiz_content.size}.¡No bueno! Keep studying."
       puts "\n"
     elsif quiz_score == 2
-      puts "You scored #{quiz_score}/#{quiz_content.size}. Que bueno, amigo. "
+      puts "You scored #{quiz_score}/#{quiz_content.size}. Bueno, amigo. Try again."
       puts "\n"
     else
       puts "You scored #{quiz_score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
