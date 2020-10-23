@@ -15,12 +15,15 @@ class CLI
       puts "\n"
       puts "Would you like to learn about Spanish speaking countries?"
       puts "   l = learn, q = quiz, e = exit"
-      self.counter += 1
-    else
+    elsif self.counter.odd?
       sleep(3)
       puts "\n"
-      puts "Do you want to review country data or test your knowledge of the country capitals?"
-      puts "   l = learn, q = quiz, e = exit"
+      puts "Would you like to review more countries or test your knowledge of the country capitals?"
+      puts "   r = review, t = test, e = exit"
+    elsif self.counter.even?
+      puts "\n"
+      puts "Would you like to try the quiz again or study country data?"
+      puts "   s = study, q = quiz, e = exit"
     end
 
     user_input = gets.strip.downcase
@@ -31,7 +34,8 @@ class CLI
     end
 
 
-    if user_input == "l"
+    if user_input == "l" || user_input == "s" || user_input == "r"
+      self.counter += 1
       puts "¡Muy bien! Here's a directory of the countries that speak Español."
       puts "\n"
 
@@ -42,7 +46,8 @@ class CLI
 
       open_menu
 
-    elsif user_input == "q"
+    elsif user_input == "q" || user_input == "t"
+      self.counter += 2
       puts "¡Bien, vamonos!"
       puts "\n"
 
@@ -168,6 +173,10 @@ class CLI
       puts "\n"
     else
       puts "You scored #{quiz_score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
+    end
+
+    if self.counter.odd?
+      self.counter -= 1
     end
 
     open_menu
