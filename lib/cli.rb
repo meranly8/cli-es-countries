@@ -16,7 +16,7 @@ class CLI
       puts "Would you like to learn about Spanish speaking countries?"
       puts "   l = learn, q = quiz, e = exit"
     elsif self.counter.odd?
-      sleep(3)
+      sleep(2)
       puts "\n"
       puts "Would you like to review more countries or test your knowledge of the country capitals?"
       puts "   r = review, t = test, e = exit"
@@ -102,10 +102,8 @@ class CLI
     end
     puts "   Currency:    (#{country.currency_symbol}) #{country.currency_name}"
 
-    if self.counter.even?
-      self.counter -= 1
-    end
-
+    self.counter -= 1 if self.counter.even?
+    
   end
 
   def capital_quiz
@@ -138,7 +136,7 @@ class CLI
     puts "What is the capital of #{content[0][0]}?"
     q1_input = gets.strip.downcase
     if q1_input == content[0][1].downcase
-      puts "   ¡Correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
+      puts "   ¡Sí, correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
       score += 1
     else
       puts "   ¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
@@ -148,7 +146,7 @@ class CLI
     puts "What is the capital of #{content[1][0]}?"
     q2_input = gets.strip.downcase
     if q2_input == content[1][1].downcase
-      puts "   ¡Fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
+      puts "   ¡Sí, fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
       score += 1
     else
       puts "   ¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
@@ -158,7 +156,7 @@ class CLI
     puts "What is the capital of #{content[2][0]}?"
     q3_input = gets.strip.downcase
     if q3_input == content[2][1].downcase
-      puts "   ¡Maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
+      puts "   ¡Sí, maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
       score += 1
     else
       puts "   ¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
@@ -180,9 +178,7 @@ class CLI
       puts "You scored #{quiz_score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
     end
 
-    if self.counter.odd?
-      self.counter -= 1
-    end
+    self.counter -= 1 if self.counter.odd?
 
     open_menu
   end
