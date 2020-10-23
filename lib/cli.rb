@@ -13,14 +13,14 @@ class CLI
   def open_menu
     if self.counter == 0
       puts "\n"
-      puts "Would you like to learn about Spanish speaking countries? (l/q/e)"
-      puts "l = learn, q = quiz, e = exit"
+      puts "Would you like to learn about Spanish speaking countries?"
+      puts "   l = learn, q = quiz, e = exit"
       self.counter += 1
     else
       sleep(3)
       puts "\n"
-      puts "Would you like to learn more about another or test your knowledge of the country capitals?"
-      puts "l = learn, q = quiz, e = exit"
+      puts "Do you want to review country data or test your knowledge of the country capitals?"
+      puts "   l = learn, q = quiz, e = exit"
     end
 
     user_input = gets.strip.downcase
@@ -120,53 +120,57 @@ class CLI
     score = 0
     sleep(1)
     puts "Welcome to the Capital Quiz. ¡Buena suerte!"
+    puts "Accents count so if needed, copy from below."
+    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
+    puts "\n"
     sleep(1)
 
     puts "What is the capital of #{content[0][0]}?"
     q1_input = gets.strip.downcase
     if q1_input == content[0][1].downcase
-      puts "¡Correcto!"
+      puts "   ¡Correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
       score += 1
     else
-      puts "¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0].capitalize}"
+      puts "   ¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
     end
 
     puts "\n"
     puts "What is the capital of #{content[1][0]}?"
     q2_input = gets.strip.downcase
     if q2_input == content[1][1].downcase
-      puts "¡Fabuloso!"
+      puts "   ¡Fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
       score += 1
     else
-      puts "¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0].capitalize}"
+      puts "   ¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
     end
 
     puts "\n"
     puts "What is the capital of #{content[2][0]}?"
     q3_input = gets.strip.downcase
     if q3_input == content[2][1].downcase
-      puts "¡Maravilloso!"
+      puts "   ¡Maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
       score += 1
     else
-      puts "¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0].capitalize}"
+      puts "   ¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
     end
     puts "\n"
-    puts "\n"
 
+    score_messages(score, content)
+  end
+
+  def score_messages(quiz_score, quiz_content)
     sleep(1)
-    if score == 0 || score == 1
-      puts "You scored #{score}/#{content.size}.¡No bueno! Keep studying."
+    if quiz_score == 0 || quiz_score == 1
+      puts "You scored #{quiz_score}/#{quiz_content.size}.¡No bueno! Keep studying."
       puts "\n"
-    elsif score == 2
-      puts "You scored #{score}/#{content.size}. Que bueno, amigo. "
+    elsif quiz_score == 2
+      puts "You scored #{quiz_score}/#{quiz_content.size}. Que bueno, amigo. "
       puts "\n"
     else
-      puts "You scored #{score}/#{content.size}. ¡Magnífica! Very smart! "
+      puts "You scored #{quiz_score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
     end
 
-    sleep(1)
     open_menu
-    # score_system(score, quiz_content)
   end
 
 end
