@@ -51,7 +51,7 @@ class CLI
       puts "¡Bien, vamonos!"
       puts "\n"
 
-      capital_quiz
+      capitals_quiz
     else
       puts "¡OK, adios!"
       sleep(1)
@@ -106,7 +106,7 @@ class CLI
 
   end
 
-  def capital_quiz
+  def capitals_quiz
     quiz = Country.all.shuffle
     questions = quiz[0..2]
 
@@ -127,8 +127,8 @@ class CLI
   def start_quiz(content)
     score = 0
     sleep(1)
-    puts "Welcome to the Capital Quiz. ¡Buena suerte!"
-    puts "Accents count so if needed, copy from below."
+    puts "Welcome to the Capitals Quiz. ¡Buena suerte!"
+    puts "Accents count. If needed, copy from below."
     puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
     puts "\n"
     sleep(1)
@@ -136,30 +136,30 @@ class CLI
     puts "What is the capital of #{content[0][0]}?"
     q1_input = gets.strip.downcase
     if q1_input == content[0][1].downcase
-      puts "   ¡Sí, correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}.".colorize(:green)
+      puts "   ¡Sí, correcto! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0]}.".colorize(:red)
+      puts "   ¡Ay lo siento! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:red)
     end
 
     puts "\n"
     puts "What is the capital of #{content[1][0]}?"
     q2_input = gets.strip.downcase
     if q2_input == content[1][1].downcase
-      puts "   ¡Sí, fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}.".colorize(:green)
+      puts "   ¡Sí, fabuloso! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0]}.".colorize(:red)
+      puts "   ¡Incorrecto! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:red)
     end
 
     puts "\n"
     puts "What is the capital of #{content[2][0]}?"
     q3_input = gets.strip.downcase
     if q3_input == content[2][1].downcase
-      puts "   ¡Sí, maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}.".colorize(:green)
+      puts "   ¡Sí, maravilloso! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0]}.".colorize(:red)
+      puts "   ¡Ay triste! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:red)
     end
     puts "\n"
 
@@ -168,14 +168,16 @@ class CLI
 
   def score_messages(quiz_score, quiz_content)
     sleep(1)
+    score_out_of = "You scored #{quiz_score}/#{quiz_content.size}."
+
     if quiz_score == 0 || quiz_score == 1
-      puts "You scored #{quiz_score}/#{quiz_content.size}.¡No bueno! Keep studying."
+      puts "#{score_out_of} ¡No bueno! Keep studying."
       puts "\n"
     elsif quiz_score == 2
-      puts "You scored #{quiz_score}/#{quiz_content.size}. Bueno, amigo. Try again."
+      puts "#{score_out_of} Bueno, amigo. Try again."
       puts "\n"
     else
-      puts "You scored #{quiz_score}/#{quiz_content.size}. ¡Magnífica! Very smart! "
+      puts "#{score_out_of} ¡Magnífica! Very smart! "
     end
 
     self.counter -= 1 if self.counter.odd?
