@@ -136,30 +136,30 @@ class CLI
     puts "What is the capital of #{content[0][0]}?"
     q1_input = gets.strip.downcase
     if q1_input == content[0][1].downcase
-      puts "   ¡Sí, correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
+      puts "   ¡Sí, correcto! #{content[0][1].capitalize} is the capital of #{content[0][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0]}."
+      puts "   ¡Ay lo siento! #{content[0][1].capitalize} is the capital of #{content[0][0]}.".colorize(:red)
     end
 
     puts "\n"
     puts "What is the capital of #{content[1][0]}?"
     q2_input = gets.strip.downcase
     if q2_input == content[1][1].downcase
-      puts "   ¡Sí, fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
+      puts "   ¡Sí, fabuloso! #{content[1][1].capitalize} is the capital of #{content[1][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0]}."
+      puts "   ¡Incorrecto! #{content[1][1].capitalize} is the capital of #{content[1][0]}.".colorize(:red)
     end
 
     puts "\n"
     puts "What is the capital of #{content[2][0]}?"
     q3_input = gets.strip.downcase
     if q3_input == content[2][1].downcase
-      puts "   ¡Sí, maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
+      puts "   ¡Sí, maravilloso! #{content[2][1].capitalize} is the capital of #{content[2][0]}.".colorize(:green)
       score += 1
     else
-      puts "   ¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0]}."
+      puts "   ¡Ay triste! #{content[2][1].capitalize} is the capital of #{content[2][0]}.".colorize(:red)
     end
     puts "\n"
 

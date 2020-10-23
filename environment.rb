@@ -5,4 +5,4 @@ require_relative "./lib/country.rb"
 require 'pry'
 require 'net/http'
 require 'json'
- 
+require 'colorize'
