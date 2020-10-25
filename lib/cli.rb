@@ -110,58 +110,87 @@ class CLI
     quiz = Country.all.shuffle
     questions = quiz[0..2]
 
-    gather_quiz_content(questions)
+
+    # binding.pry
+
+    # questions.map do |country|
+    #   [country.name, country.capital]
+    # end
+
+    start_quiz(questions)
+    # gather_quiz_content(questions)
   end
 
-  def gather_quiz_content(quiz_questions)
-    quiz_content = []
+  # def gather_quiz_content(quiz_questions)
+  #   quiz_content = []
+  #
+  #   quiz_questions.each do |country|
+  #     content = [country.name, country.capital]
+  #     quiz_content << content
+  #   end
+  #
+  #   start_quiz(quiz_content)
+  # end
+
+  def start_quiz(quiz_questions)
+    score = 0
+    correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!"]
+    incorrect_messages = ["¡Incorrecto!", "¡Ay triste!"]
+
+    sleep(1)
+    puts "Welcome to the Capitals Quiz. ¡Buena suerte!".colorize(:blue)
+    puts "Accents count. If needed, copy from below.".colorize(:blue)
+    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ ".colorize(:blue)
+    puts "\n"
+    sleep(1)
 
     quiz_questions.each do |country|
-      content = [country.name, country.capital]
-      quiz_content << content
+      correct_messages.shuffle
+      incorrect_messages.shuffle
+      answer_string = "#{country.capital} is the capital of #{country.name}."
+
+      puts "What is the capital of #{country.name}?"
+      input = gets.strip.downcase
+
+      if input == country.capital.downcase
+        puts "   #{correct_messages.first} #{answer_string}".colorize(:green)
+        puts "\n"
+        score += 1
+      else
+        puts "   #{incorrect_messages.first} #{answer_string}".colorize(:red)
+        puts "\n"
+      end
     end
 
-    start_quiz(quiz_content)
-  end
-
-  def start_quiz(content)
-    score = 0
-    sleep(1)
-    puts "Welcome to the Capitals Quiz. ¡Buena suerte!"
-    puts "Accents count. If needed, copy from below."
-    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
-    puts "\n"
-    sleep(1)
-
-    puts "What is the capital of #{content[0][0]}?"
-    q1_input = gets.strip.downcase
-    if q1_input == content[0][1].downcase
-      puts "   ¡Sí, correcto! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:green)
-      score += 1
-    else
-      puts "   ¡Ay lo siento! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:red)
-    end
-
-    puts "\n"
-    puts "What is the capital of #{content[1][0]}?"
-    q2_input = gets.strip.downcase
-    if q2_input == content[1][1].downcase
-      puts "   ¡Sí, fabuloso! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:green)
-      score += 1
-    else
-      puts "   ¡Incorrecto! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:red)
-    end
-
-    puts "\n"
-    puts "What is the capital of #{content[2][0]}?"
-    q3_input = gets.strip.downcase
-    if q3_input == content[2][1].downcase
-      puts "   ¡Sí, maravilloso! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:green)
-      score += 1
-    else
-      puts "   ¡Ay triste! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:red)
-    end
-    puts "\n"
+    # puts "What is the capital of #{content[0][0]}?"
+    # q1_input = gets.strip.downcase
+    # if q1_input == content[0][1].downcase
+    #   puts "   ¡Sí, correcto! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:green)
+    #   score += 1
+    # else
+    #   puts "   ¡Ay lo siento! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:red)
+    # end
+    #
+    # puts "\n"
+    # puts "What is the capital of #{content[1][0]}?"
+    # q2_input = gets.strip.downcase
+    # if q2_input == content[1][1].downcase
+    #   puts "   ¡Sí, fabuloso! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:green)
+    #   score += 1
+    # else
+    #   puts "   ¡Incorrecto! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:red)
+    # end
+    #
+    # puts "\n"
+    # puts "What is the capital of #{content[2][0]}?"
+    # q3_input = gets.strip.downcase
+    # if q3_input == content[2][1].downcase
+    #   puts "   ¡Sí, maravilloso! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:green)
+    #   score += 1
+    # else
+    #   puts "   ¡Ay triste! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:red)
+    # end
+    # puts "\n"
 
     score_messages(score, content)
   end
