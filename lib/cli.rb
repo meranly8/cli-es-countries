@@ -59,7 +59,7 @@ class CLI
   end
 
   def display_list_of_countries
-    puts "           Country Directory".upcase
+    puts "           Country Directory".upcase.colorize(:blue)
     Country.all.each_with_index do |country, index|
       puts "   #{index+1}. #{country.name}"
     end
@@ -110,27 +110,8 @@ class CLI
     quiz = Country.all.shuffle
     questions = quiz[0..2]
 
-
-    # binding.pry
-
-    # questions.map do |country|
-    #   [country.name, country.capital]
-    # end
-
     start_quiz(questions)
-    # gather_quiz_content(questions)
   end
-
-  # def gather_quiz_content(quiz_questions)
-  #   quiz_content = []
-  #
-  #   quiz_questions.each do |country|
-  #     content = [country.name, country.capital]
-  #     quiz_content << content
-  #   end
-  #
-  #   start_quiz(quiz_content)
-  # end
 
   def start_quiz(quiz_questions)
     score = 0
@@ -139,12 +120,14 @@ class CLI
 
     sleep(1)
     puts "Welcome to the Capitals Quiz. ¡Buena suerte!".colorize(:blue)
-    puts "Accents count. If needed, copy from below.".colorize(:blue)
-    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ ".colorize(:blue)
+    puts "Accents count. If needed, copy from below."
+    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
     puts "\n"
     sleep(1)
 
     quiz_questions.each do |country|
+
+      # this doesn't seem to be working
       correct_messages.shuffle
       incorrect_messages.shuffle
       answer_string = "#{country.capital} is the capital of #{country.name}."
@@ -162,42 +145,12 @@ class CLI
       end
     end
 
-    # puts "What is the capital of #{content[0][0]}?"
-    # q1_input = gets.strip.downcase
-    # if q1_input == content[0][1].downcase
-    #   puts "   ¡Sí, correcto! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:green)
-    #   score += 1
-    # else
-    #   puts "   ¡Ay lo siento! #{content[0][1]} is the capital of #{content[0][0]}.".colorize(:red)
-    # end
-    #
-    # puts "\n"
-    # puts "What is the capital of #{content[1][0]}?"
-    # q2_input = gets.strip.downcase
-    # if q2_input == content[1][1].downcase
-    #   puts "   ¡Sí, fabuloso! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:green)
-    #   score += 1
-    # else
-    #   puts "   ¡Incorrecto! #{content[1][1]} is the capital of #{content[1][0]}.".colorize(:red)
-    # end
-    #
-    # puts "\n"
-    # puts "What is the capital of #{content[2][0]}?"
-    # q3_input = gets.strip.downcase
-    # if q3_input == content[2][1].downcase
-    #   puts "   ¡Sí, maravilloso! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:green)
-    #   score += 1
-    # else
-    #   puts "   ¡Ay triste! #{content[2][1]} is the capital of #{content[2][0]}.".colorize(:red)
-    # end
-    # puts "\n"
-
-    score_messages(score, content)
+    score_messages(score, quiz_questions)
   end
 
-  def score_messages(quiz_score, quiz_content)
+  def score_messages(quiz_score, quiz_questions)
     sleep(1)
-    score_out_of = "You scored #{quiz_score}/#{quiz_content.size}."
+    score_out_of = "You scored #{quiz_score}/#{quiz_questions.size}."
 
     if quiz_score == 0 || quiz_score == 1
       puts "#{score_out_of} ¡No bueno! Keep studying."
