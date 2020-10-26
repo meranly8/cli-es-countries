@@ -67,7 +67,7 @@ class CLI
 
   def ask_for_country_selection
     puts "\n"
-    puts "Please enter the number of the country to learn more about it."
+    puts "Enter the number of the country to learn more about it."
     puts "Select a number 1-#{Country.all.length}."
 
     country_index = gets.strip.to_i-1
@@ -118,14 +118,14 @@ class CLI
 
     sleep(1)
     puts "Welcome to the Capitals Quiz. ¡Buena suerte!".colorize(:blue)
-    puts "Accents count. If needed, copy from below."
-    puts "  Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
+    puts "  Accents count. If needed, copy from below.".colorize(:blue)
+    puts "   Á á   Å å   É é   Í í   Ó ó   Ú ú   Ñ ñ "
     puts "\n"
     sleep(1)
 
     quiz_questions.each do |country|
-      correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!"].shuffle
-      incorrect_messages = ["¡Incorrecto!", "¡Ay triste!", "¡Ay no!", "No bueno", "¡Ay mio!"].shuffle
+      correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!", "¡Inteligente!"].shuffle
+      incorrect_messages = ["¡Incorrecto!", "¡Ay triste!", "¡Ay no!", "No bueno.", "¡Ay mio!"].shuffle
       answer_string = "#{country.capital} is the capital of #{country.name}."
 
       puts "What is the capital of #{country.name}?"
@@ -155,7 +155,7 @@ class CLI
       puts "#{score_out_of} Bueno, amigo. Try again."
       puts "\n"
     else
-      puts "#{score_out_of} ¡Magnífica! Very smart! "
+      puts "#{score_out_of} ¡Magnífica, 100%! ¡Muy inteligente! "
     end
 
     self.counter -= 1 if self.counter.odd?
