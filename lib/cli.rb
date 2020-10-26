@@ -26,27 +26,27 @@ class CLI
       puts "   s = study, q = quiz, e = exit"
     end
 
-    user_input = gets.strip.downcase
+    input = gets.strip.downcase
 
-    while user_input.length > 1
+    while input.length > 1
         puts "¡Ay! Only 1 character, por favor."
-        user_input = gets.strip.downcase
+        input = gets.strip.downcase
     end
 
 
-    if user_input == "l" || user_input == "s" || user_input == "r"
+    if input == "l" || input == "s" || input == "r"
       self.counter += 1
-      puts "¡Muy bien! Here's a directory of the countries that speak Español."
+      puts "¡Muy bien! Below is a directory of the countries speaking Español."
       puts "\n"
 
-      sleep(2)
+      sleep(3)
       display_list_of_countries
 
       ask_for_country_selection
 
       open_menu
 
-    elsif user_input == "q" || user_input == "t"
+    elsif input == "q" || input == "t"
       self.counter += 2
       puts "¡Bien, vamonos!"
       puts "\n"
@@ -68,11 +68,11 @@ class CLI
   def ask_for_country_selection
     puts "\n"
     puts "Enter the number of the country to learn more about it."
-    puts "Select a number 1-#{Country.all.length}."
+    puts "Select a number 1-#{Country.all.size}."
 
     country_index = gets.strip.to_i-1
 
-    until country_index.between?(0, Country.all.length-1)
+    until country_index.between?(0, Country.all.size-1)
       puts "¡No bueno! Invalid selection. Try another, por favor."
       sleep(1)
       country_index = gets.strip.to_i-1
@@ -95,7 +95,7 @@ class CLI
     puts "\n"
     puts "   Demonym:     #{country.demonym}"
     puts "   Population:  #{country.population}"
-    if country.borders.length == 0
+    if country.borders.size == 0
       puts "   Borders:     #{country.name} is an island"
     else
       puts "   Borders:     #{country.borders.join(", ")}"
