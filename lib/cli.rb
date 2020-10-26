@@ -39,7 +39,7 @@ class CLI
       puts "¡Muy bien! Here's a directory of the countries that speak Español."
       puts "\n"
 
-      sleep(3)
+      sleep(2)
       display_list_of_countries
 
       ask_for_country_selection
@@ -51,7 +51,7 @@ class CLI
       puts "¡Bien, vamonos!"
       puts "\n"
 
-      capitals_quiz
+      build_capitals_quiz
     else
       puts "¡OK, adios!"
       sleep(1)
@@ -106,7 +106,7 @@ class CLI
 
   end
 
-  def capitals_quiz
+  def build_capitals_quiz
     quiz = Country.all.shuffle
     questions = quiz[0..2]
 
@@ -115,8 +115,6 @@ class CLI
 
   def start_quiz(quiz_questions)
     score = 0
-    correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!"]
-    incorrect_messages = ["¡Incorrecto!", "¡Ay triste!"]
 
     sleep(1)
     puts "Welcome to the Capitals Quiz. ¡Buena suerte!".colorize(:blue)
@@ -126,10 +124,8 @@ class CLI
     sleep(1)
 
     quiz_questions.each do |country|
-
-      # this doesn't seem to be working
-      correct_messages.shuffle
-      incorrect_messages.shuffle
+      correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!"].shuffle
+      incorrect_messages = ["¡Incorrecto!", "¡Ay triste!", "¡Ay no!", "No bueno", "¡Ay mio!"].shuffle
       answer_string = "#{country.capital} is the capital of #{country.name}."
 
       puts "What is the capital of #{country.name}?"
