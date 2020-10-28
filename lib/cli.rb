@@ -7,10 +7,10 @@ class CLI
 
     sleep(1)
     @counter = 0
-    self.open_menu
+    self.main_menu
   end
 
-  def open_menu
+  def main_menu
     if self.counter == 0
       puts "\n"
       puts "Would you like to learn about Spanish speaking countries?"
@@ -44,11 +44,11 @@ class CLI
 
       ask_for_country_selection
 
-      open_menu
+      main_menu
 
     elsif input == "q" || input == "t"
       self.counter += 2
-      puts "¡Bien, vamonos!"
+      puts "¡Bien, vamos al examen!"
       puts "\n"
 
       build_capitals_quiz
@@ -80,10 +80,10 @@ class CLI
 
     country_selection = Country.all[country_index]
 
-    display_selected_countrys_details(country_selection)
+    display_selected_country_details(country_selection)
   end
 
-  def display_selected_countrys_details(country)
+  def display_selected_country_details(country)
     puts "¡Excelente!"
     sleep(1)
     puts "\n"
@@ -160,7 +160,7 @@ class CLI
 
     self.counter -= 1 if self.counter.odd?
 
-    open_menu
+    main_menu
   end
 
 end
