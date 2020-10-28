@@ -146,16 +146,16 @@ class CLI
 
   def score_messages(quiz_score, quiz_questions)
     sleep(1)
-    score_out_of = "You scored #{quiz_score}/#{quiz_questions.size}."
+    quiz_outcome = "You scored #{quiz_score}/#{quiz_questions.size}."
 
     if quiz_score == 0 || quiz_score == 1
-      puts "#{score_out_of} ¡No bueno! Keep studying."
+      puts "#{quiz_outcome} ¡No bueno! Keep studying."
       puts "\n"
     elsif quiz_score == 2
-      puts "#{score_out_of} Bueno, amigo. Try again."
+      puts "#{quiz_outcome} Bueno, amigo. Try again."
       puts "\n"
     else
-      puts "#{score_out_of} ¡Magnífica, 100%! ¡Muy inteligente! "
+      puts "#{quiz_outcome} ¡Magnífica, 100%! ¡Muy inteligente! "
     end
 
     self.counter -= 1 if self.counter.odd?
