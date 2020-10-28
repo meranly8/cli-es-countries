@@ -115,6 +115,8 @@ class CLI
 
   def start_quiz(quiz_questions)
     score = 0
+    correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!", "¡Inteligente!"]
+    incorrect_messages = ["¡Incorrecto!", "¡Ay triste!", "¡Ay no!", "No bueno.", "¡Ay mio!"]
 
     sleep(1)
     puts "Welcome to the Capitals Quiz. ¡Buena suerte!".colorize(:blue)
@@ -124,19 +126,17 @@ class CLI
     sleep(1)
 
     quiz_questions.each do |country|
-      correct_messages = ["¡Correcto!", "¡Fabuloso!", "¡Maravilloso!", "¡Estupendo!", "¡Inteligente!"].shuffle
-      incorrect_messages = ["¡Incorrecto!", "¡Ay triste!", "¡Ay no!", "No bueno.", "¡Ay mio!"].shuffle
       answer_string = "#{country.capital} is the capital of #{country.name}."
 
       puts "What is the capital of #{country.name}?"
       input = gets.strip.downcase
 
       if input == country.capital.downcase
-        puts "   #{correct_messages.first} #{answer_string}".colorize(:green)
+        puts "   #{correct_messages.shuffle.first} #{answer_string}".colorize(:green)
         puts "\n"
         score += 1
       else
-        puts "   #{incorrect_messages.first} #{answer_string}".colorize(:red)
+        puts "   #{incorrect_messages.shuffle.first} #{answer_string}".colorize(:red)
         puts "\n"
       end
     end
