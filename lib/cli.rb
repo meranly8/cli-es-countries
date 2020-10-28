@@ -107,10 +107,10 @@ class CLI
   end
 
   def build_capitals_quiz
-    quiz = Country.all.shuffle
-    questions = quiz[0..2]
+    shuffle_countries = Country.all.shuffle
+    countries_for_quiz = shuffle_countries[0..2]
 
-    start_quiz(questions)
+    start_quiz(countries_for_quiz)
   end
 
   def start_quiz(quiz_questions)
